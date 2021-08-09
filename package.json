@@ -1,14 +1,18 @@
 {
 	"name": "@drovp/types",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Drovp plugin API definitions",
+	"keywords": [
+		"drovp",
+		"typescript",
+		"types"
+	],
 	"publishConfig": {
 		"access": "public"
 	},
 	"files": [
 		"index.js",
-		"index.d.ts",
-		"electron.d.ts"
+		"index.d.ts"
 	],
 	"license": "MIT",
 	"main": "index.js",
