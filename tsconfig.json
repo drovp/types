@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"module": "ES2020",
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"newLine": "LF",
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"target": "ES2019",
+		"sourceMap": false
+	},
+}
