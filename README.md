@@ -5,7 +5,7 @@ This package contains type definitions for Drovp plugin API (https://github.com/
 ## Installation
 
 ```
-npm install --save-dev @drovp/types@*
+npm install --save-dev @drovp/types
 ```
 
 ## Documentation
