@@ -19,7 +19,7 @@ Types are intended to be imported in:
 ### `main.ts` (plugin)
 
 ```ts
-import {App, PayloadData, makeOptionsSchema, makeAcceptsFlags} from '@drovp/types';
+import {Plugin, PayloadData, makeOptionsSchema, makeAcceptsFlags} from '@drovp/types';
 
 type Options = {
 	bulkItems: boolean;
@@ -49,8 +49,8 @@ export interface Dependencies {
 	ffmpeg: string;
 }
 
-export default (app: App) => {
-	app.registerProcessor<Payload>('foo', {
+export default (plugin: Plugin) => {
+	plugin.registerProcessor<Payload>('foo', {
 		main: 'dist/processor.js',
 		dependencies: ['@drovp/ffmpeg:ffmpeg'],
 		accepts: accepts,

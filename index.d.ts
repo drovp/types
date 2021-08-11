@@ -26,9 +26,9 @@ export declare function makeDependencyConfig<T extends DependencyConfig = Depend
  * PLUGIN API.
  */
 
-export type Plugin = (app: App) => void;
+export type PluginModule = (plugin: Plugin) => void;
 
-export interface App {
+export interface Plugin {
 	registerProcessor<Payload extends AnyPayload = AnyPayload>(name: string, config: ProcessorConfig<Payload>): void;
 	registerDependency(name: string, config: DependencyConfig): void;
 }
