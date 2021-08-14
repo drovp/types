@@ -338,9 +338,10 @@ export interface InstallUtils {
 
 export interface Progress {
 	(progress?: ProgressData | null): void;
-	(completed?: number | null, total?: number | null): void;
+	(completed?: number | null, total?: number | null, indeterminate?: boolean): void;
 	data: ProgressData;
 	completed: number | undefined;
+	indeterminate: boolean | undefined;
 	total: number | undefined;
 	destroy: () => void;
 	toJSON: () => ProgressData;
