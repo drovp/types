@@ -346,7 +346,7 @@ export interface Progress {
 	toJSON: () => ProgressData;
 }
 
-export type ProgressData = {completed?: number; total?: number};
+export type ProgressData = {completed?: number; total?: number; indeterminate?: boolean};
 
 export interface ResultEmitters {
 	file: (path: string) => void;
