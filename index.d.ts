@@ -404,10 +404,10 @@ export interface ExtractOptions {
 }
 
 interface Extract {
-	(archivePath: string, destinationPath: string, options?: ExtractOptions & {listDetails: true}): Promise<
+	(archivePath: string, destinationPath: string, options: ExtractOptions & {listDetails: true}): Promise<
 		ExtractListDetailItem[]
 	>;
-	(archivePath: string, options?: ExtractOptions & {listDetails: true}): Promise<ExtractListDetailItem[]>;
+	(archivePath: string, options: ExtractOptions & {listDetails: true}): Promise<ExtractListDetailItem[]>;
 	(archivePath: string, destinationPath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
 	(archivePath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
 }
