@@ -394,6 +394,13 @@ interface Download {
 export interface ExtractOptions {
 	listRecursive?: boolean;
 	listDetails?: boolean;
+	onStdout?: (data: Buffer) => void;
+	onStderr?: (data: Buffer) => void;
+}
+
+export interface ExtractOptions {
+	listRecursive?: boolean;
+	listDetails?: boolean;
 }
 
 interface Extract {
