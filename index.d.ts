@@ -380,10 +380,6 @@ interface Cleanup {
 	(directoryPath: string): Promise<void>;
 }
 
-interface Download {
-	(url: string | URL, destination: string, options?: DownloadOptions): Promise<string>;
-}
-
 export interface DownloadOptions {
 	onProgress?: (progress: {completed: number; total?: number}) => void;
 	filename?: string;
@@ -391,16 +387,22 @@ export interface DownloadOptions {
 	signal?: AbortSignal;
 }
 
-interface Extract {
-	(archivePath: string, options?: ExtractOptions): Promise<string[] | ExtractListDetailItem[]>;
-	(archivePath: string, destinationPath: string, options?: ExtractOptions): Promise<
-		string[] | ExtractListDetailItem[]
-	>;
+interface Download {
+	(url: string | URL, destination: string, options?: DownloadOptions): Promise<string>;
 }
 
 export interface ExtractOptions {
 	listRecursive?: boolean;
 	listDetails?: boolean;
+}
+
+interface Extract {
+	(archivePath: string, destinationPath: string, options?: ExtractOptions & {listDetails: true}): Promise<
+		ExtractListDetailItem[]
+	>;
+	(archivePath: string, options?: ExtractOptions & {listDetails: true}): Promise<ExtractListDetailItem[]>;
+	(archivePath: string, destinationPath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
+	(archivePath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
 }
 
 export interface ExtractListDetailItem {
