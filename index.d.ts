@@ -214,7 +214,7 @@ export interface OptionNamespace<
 > extends OptionBase<OptionsData, O> {
 	type: 'namespace';
 	schema: S;
-	default?: undefined;
+	default?: OptionsData;
 }
 
 export interface OptionCollection<
@@ -223,7 +223,7 @@ export interface OptionCollection<
 > extends OptionBase<OptionsData[], O> {
 	type: 'collection';
 	schema: S;
-	default?: undefined;
+	default?: OptionsData[];
 }
 
 export interface OptionDivider<O extends OptionsData | undefined = OptionsData | undefined>
