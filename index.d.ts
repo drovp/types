@@ -235,7 +235,7 @@ export interface OptionCategory<O extends OptionsData | undefined = OptionsData 
 	extends OptionBase<string, O> {
 	type: 'category';
 	default?: string;
-	options: string[] | InputOptions | ((options: OptionsData) => string[] | InputOptions);
+	options: string[] | InputOptions | ((options: O) => string[] | InputOptions);
 }
 
 export type OptionSerializable<O extends OptionsData | undefined = OptionsData | undefined> =
