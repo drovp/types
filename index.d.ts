@@ -224,6 +224,7 @@ export interface OptionCollection<
 	type: 'collection';
 	schema: S;
 	default?: OptionsData[];
+	itemTitle?: string;
 }
 
 export interface OptionDivider<O extends OptionsData | undefined = OptionsData | undefined>
