@@ -356,6 +356,7 @@ export interface ResultEmitters {
 	url: (url: string) => void;
 	string: (contents: string, type?: string) => void;
 	error: (error: Error | string) => void;
+	warning: (message: string) => void;
 }
 
 export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[key: string]: any}> {
