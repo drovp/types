@@ -118,6 +118,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	operationMetaFormatter?: (meta: any) => string; // HTML
 	profileMetaUpdater?: (profileMeta: any, operationMeta: any) => any;
 	profileMetaFormatter?: (meta: any) => string; // HTML
+	instructions?: string;
 }
 
 export interface DependencyConfig {
