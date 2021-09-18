@@ -365,6 +365,7 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	result: ResultEmitters;
 	progress: Progress;
 	meta: (meta: unknown) => void;
+	log: (...args: any[]) => void;
 	stage: (name: string) => void;
 }
 
