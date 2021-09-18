@@ -364,6 +364,7 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	dependencies: Dependencies;
 	result: ResultEmitters;
 	progress: Progress;
+	title: (value: string | undefined | null) => void;
 	meta: (meta: unknown) => void;
 	log: (...args: any[]) => void;
 	stage: (name: string) => void;
@@ -373,6 +374,7 @@ export interface PreparatorUtils {
 	meta: PreparatorMeta;
 	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
+	title(value: string | undefined | null): void;
 }
 
 export interface PreparatorMeta {
