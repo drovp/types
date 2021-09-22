@@ -373,15 +373,11 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 }
 
 export interface PreparatorUtils {
-	meta: PreparatorMeta;
-	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
-	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
-	title(value: string | undefined | null): void;
-}
-
-export interface PreparatorMeta {
 	modifiers: string;
 	action: 'drop' | 'paste';
+	title(value: string | undefined | null): void;
+	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
+	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
 }
 
 interface Cleanup {
