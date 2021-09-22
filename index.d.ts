@@ -151,28 +151,6 @@ export interface OptionBoolean<O extends OptionsData | undefined = OptionsData |
 	default?: boolean;
 }
 
-export interface OptionString<O extends OptionsData | undefined = OptionsData | undefined>
-	extends OptionBase<string, O> {
-	type: 'string';
-	kind?: 'date';
-	default?: string;
-	lines?: number;
-	min?: number;
-	max?: number;
-	softMax?: number;
-	validator?: (value: string, options: O, path: (string | number)[]) => boolean;
-	asyncValidator?: (value: string, options: O, path: (string | number)[]) => Promise<boolean>;
-	asyncValidatorDebounce?: number;
-	validationDependencies?: string[];
-}
-
-export interface OptionPath<O extends OptionsData | undefined = OptionsData | undefined> extends OptionBase<string, O> {
-	type: 'path';
-	default?: string;
-	kind?: 'file' | 'directory';
-	filters?: DialogFileFilter[];
-}
-
 export type OptionNumber<O extends OptionsData | undefined = OptionsData | undefined> = OptionBase<number | null, O> & {
 	type: 'number';
 	kind?: 'integer' | 'float';
@@ -185,6 +163,33 @@ export type OptionNumber<O extends OptionsData | undefined = OptionsData | undef
 	softMax?: boolean;
 	steps?: number[];
 };
+
+export interface OptionString<O extends OptionsData | undefined = OptionsData | undefined>
+	extends OptionBase<string, O> {
+	type: 'string';
+	default?: string;
+	rows?: number;
+	cols?: number;
+	min?: number;
+	max?: number;
+	validator?: (value: string, options: O, path: (string | number)[]) => boolean;
+	asyncValidator?: (value: string, options: O, path: (string | number)[]) => Promise<boolean>;
+	asyncValidatorDebounce?: number;
+	validationDependencies?: string[];
+}
+
+export interface OptionColor<O extends OptionsData | undefined = OptionsData | undefined>
+	extends OptionBase<string, O> {
+	type: 'color';
+	default?: string;
+}
+
+export interface OptionPath<O extends OptionsData | undefined = OptionsData | undefined> extends OptionBase<string, O> {
+	type: 'path';
+	default?: string;
+	kind?: 'file' | 'directory';
+	filters?: DialogFileFilter[];
+}
 
 export interface OptionSelect<
 	OD extends OptionsData | undefined = OptionsData | undefined,
@@ -200,8 +205,9 @@ export interface OptionSelect<
 
 export interface OptionList<
 	O extends OptionsData | undefined = OptionsData | undefined,
-	S extends OptionString<O> | OptionPath<O> | OptionNumber<O> | OptionSelect<O> =
+	S extends OptionString<O> | OptionColor<O> | OptionPath<O> | OptionNumber<O> | OptionSelect<O> =
 		| OptionString<O>
+		| OptionColor<O>
 		| OptionPath<O>
 		| OptionNumber<O>
 		| OptionSelect<O>
@@ -244,9 +250,10 @@ export interface OptionCategory<O extends OptionsData | undefined = OptionsData 
 
 export type OptionSerializable<O extends OptionsData | undefined = OptionsData | undefined> =
 	| OptionBoolean<O>
-	| OptionString<O>
-	| OptionPath<O>
 	| OptionNumber<O>
+	| OptionString<O>
+	| OptionColor<O>
+	| OptionPath<O>
 	| OptionSelect<O>
 	| OptionList<O>
 	| OptionNamespace<O>
@@ -254,9 +261,10 @@ export type OptionSerializable<O extends OptionsData | undefined = OptionsData |
 	| OptionCategory<O>;
 export type OptionSimple<O extends OptionsData | undefined = OptionsData | undefined> =
 	| OptionBoolean<O>
-	| OptionString<O>
-	| OptionPath<O>
 	| OptionNumber<O>
+	| OptionString<O>
+	| OptionColor<O>
+	| OptionPath<O>
 	| OptionSelect<O>
 	| OptionList<O>;
 export type OptionDecorative<O extends OptionsData | undefined = OptionsData | undefined> = OptionDivider<O>;
