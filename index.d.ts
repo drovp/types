@@ -118,6 +118,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	operationMetaFormatter?: (meta: any) => string; // HTML
 	profileMetaUpdater?: (profileMeta: any, operationMeta: any) => any;
 	profileMetaFormatter?: (meta: any) => string; // HTML
+	modifierDescriptions?: {[key: string]: string} | ((options: Payload['options']) => {[key: string]: string});
 	instructions?: string;
 }
 
