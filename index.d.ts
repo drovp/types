@@ -113,7 +113,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	operationPreparator?: (
 		payload: Pick<Payload, 'id' | 'options' | 'item' | 'items'>,
 		utils: PreparatorUtils
-	) => Promise<Payload | null | undefined | false | void>;
+	) => Payload | null | undefined | false | void | Promise<Payload | null | undefined | false | void>;
 	progressFormatter?: 'bytes' | ((progress: ProgressData) => string); // HTML
 	operationMetaFormatter?: (meta: any) => string; // HTML
 	profileMetaUpdater?: (profileMeta: any, operationMeta: any) => any;
