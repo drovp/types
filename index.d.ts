@@ -109,7 +109,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	options?: OptionsSchema<Payload['options']> | OptionsLaxSchema;
 	parallelize?: boolean | ((payload: Payload) => boolean);
 	keepAlive?: boolean;
-	dropFilter?: (items: Item[], options?: Payload['options']) => Item[];
+	dropFilter?: (items: Item[], options?: Payload['options']) => Item[] | Promise<Item[]>;
 	operationPreparator?: (
 		payload: Pick<Payload, 'id' | 'options' | 'item' | 'items'>,
 		utils: PreparatorUtils
