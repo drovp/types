@@ -378,6 +378,7 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	meta: (meta: unknown) => void;
 	log: (...args: any[]) => void;
 	stage: (name: string) => void;
+	appVersion: string;
 }
 
 export interface PreparatorUtils {
