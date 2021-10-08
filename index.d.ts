@@ -140,8 +140,8 @@ export interface OptionBase<V = any, O extends OptionsData | undefined = Options
 	title?: string;
 	hint?: string | ((value: V, options: O, path: (string | number)[]) => string | number | null | undefined);
 	description?: string | ((value: V, options: O, path: (string | number)[]) => string | number | null | undefined);
-	isDisabled?: (value: V, options: O, path: (string | number)[]) => boolean;
-	isHidden?: (value: V, options: O, path: (string | number)[]) => boolean;
+	isDisabled?: boolean | ((value: V, options: O, path: (string | number)[]) => boolean);
+	isHidden?: boolean | ((value: V, options: O, path: (string | number)[]) => boolean);
 	isResettable?: boolean;
 }
 
