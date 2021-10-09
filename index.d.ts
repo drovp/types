@@ -365,7 +365,7 @@ export interface OutputEmitters {
 	file: (path: string) => void;
 	directory: (path: string) => void;
 	url: (url: string) => void;
-	string: (contents: string, type?: string) => void;
+	string: (contents: string, meta?: {type?: string}) => void;
 	error: (error: Error | string) => void;
 	warning: (message: string) => void;
 }
