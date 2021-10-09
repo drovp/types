@@ -361,7 +361,7 @@ export interface Progress {
 
 export type ProgressData = {completed?: number; total?: number; indeterminate?: boolean};
 
-export interface ResultEmitters {
+export interface OutputEmitters {
 	file: (path: string) => void;
 	directory: (path: string) => void;
 	url: (url: string) => void;
@@ -372,7 +372,7 @@ export interface ResultEmitters {
 
 export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[key: string]: any}> {
 	dependencies: Dependencies;
-	result: ResultEmitters;
+	output: OutputEmitters;
 	progress: Progress;
 	title: (value: string | undefined | null) => void;
 	meta: (meta: unknown) => void;
