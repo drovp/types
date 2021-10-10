@@ -42,15 +42,15 @@ export type PayloadData<
 > = {
 	readonly id: string;
 	options: Options;
-	item: undefined extends Accepts ? undefined : AcceptedItems<Exclude<Accepts, undefined>>;
-	items: undefined extends Accepts ? undefined : AcceptedItems<Exclude<Accepts, undefined>>[];
+	input: undefined extends Accepts ? undefined : AcceptedItems<Exclude<Accepts, undefined>>;
+	inputs: undefined extends Accepts ? undefined : AcceptedItems<Exclude<Accepts, undefined>>[];
 } & Extra;
 
 export interface AnyPayload {
 	readonly id: string;
 	options: OptionsData | undefined;
-	item: undefined | Item;
-	items: undefined | Item[];
+	input: undefined | Item;
+	inputs: undefined | Item[];
 	[key: string]: any;
 }
 
@@ -102,7 +102,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	description?: string;
 	dependencies?: string[];
 	accepts?: AcceptsFlags<Payload['options']>;
-	bulkItems?: boolean | ((items: Item[], options: Payload['options']) => boolean);
+	bulk?: boolean | ((items: Item[], options: Payload['options']) => boolean);
 	expandDirectory?: (item: ItemDirectory, options: Payload['options']) => boolean;
 	threadType?: string | string[] | ((payload: Payload) => string | string[]);
 	threadTypeDescription?: string;
