@@ -111,7 +111,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	keepAlive?: boolean;
 	dropFilter?: (items: Item[], options?: Payload['options']) => Item[] | Promise<Item[]>;
 	operationPreparator?: (
-		payload: Pick<Payload, 'id' | 'options' | 'item' | 'items'>,
+		payload: Pick<Payload, 'id' | 'options' | 'input' | 'inputs'>,
 		utils: PreparatorUtils
 	) => Payload | null | undefined | false | void | Promise<Payload | null | undefined | false | void>;
 	progressFormatter?: 'bytes' | ((progress: ProgressData) => string); // HTML
