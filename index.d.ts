@@ -412,7 +412,6 @@ export interface ExtractOptions {
 }
 
 export interface ExtractOptions {
-	listRecursive?: boolean;
 	listDetails?: boolean;
 }
 
