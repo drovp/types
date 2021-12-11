@@ -182,6 +182,7 @@ export interface OptionColor<O extends OptionsData | undefined = OptionsData | u
 	extends OptionBase<string, O> {
 	type: 'color';
 	default?: string;
+	formatSelection?: (newValue: string, oldValue: string) => string;
 }
 
 export interface OptionPath<O extends OptionsData | undefined = OptionsData | undefined> extends OptionBase<string, O> {
@@ -189,6 +190,7 @@ export interface OptionPath<O extends OptionsData | undefined = OptionsData | un
 	default?: string;
 	kind?: 'file' | 'directory';
 	filters?: DialogFileFilter[];
+	formatSelection?: (newValue: string, oldValue: string) => string;
 }
 
 export interface OptionSelect<
