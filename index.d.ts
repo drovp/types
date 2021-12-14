@@ -122,8 +122,13 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	instructions?: string;
 }
 
+export interface DependencyData {
+	version?: string;
+	payload?: any;
+}
+
 export interface DependencyConfig {
-	load(utils: LoadUtils): Promise<boolean | any>;
+	load(utils: LoadUtils): Promise<boolean | DependencyData>;
 	install?(utils: InstallUtils): Promise<void>;
 	instructions?: string;
 }
