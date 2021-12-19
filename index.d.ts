@@ -402,6 +402,7 @@ interface Cleanup {
 
 export interface DownloadOptions {
 	onProgress?: (progress: {completed: number; total?: number}) => void;
+	onLog?: (message: string) => void;
 	filename?: string;
 	timeout?: number;
 	signal?: AbortSignal;
