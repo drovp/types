@@ -142,7 +142,7 @@ export type InputOptions = {[key: string]: string};
 
 export interface OptionBase<V = any, O extends OptionsData | undefined = OptionsData | undefined> {
 	name: string;
-	title?: string;
+	title?: string | false;
 	hint?: string | ((value: V, options: O, path: (string | number)[]) => string | number | null | undefined);
 	description?: string | ((value: V, options: O, path: (string | number)[]) => string | number | null | undefined);
 	isDisabled?: boolean | ((value: V, options: O, path: (string | number)[]) => boolean);
