@@ -177,6 +177,7 @@ export interface OptionString<O extends OptionsData | undefined = OptionsData | 
 	cols?: number;
 	min?: number;
 	max?: number;
+	preselect?: boolean;
 	validator?: (value: string, options: O, path: (string | number)[]) => boolean;
 	asyncValidator?: (value: string, options: O, path: (string | number)[]) => Promise<boolean>;
 	asyncValidatorDebounce?: number;
