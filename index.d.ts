@@ -337,6 +337,13 @@ export interface ItemWarning extends ItemBase {
 	message: string;
 }
 
+type Variant = 'success' | 'info' | 'warning' | 'danger';
+
+export interface Flair {
+	type?: Variant;
+	title: string;
+}
+
 /**
  * UTILS.
  */
@@ -370,12 +377,12 @@ export interface Progress {
 export type ProgressData = {completed?: number; total?: number; indeterminate?: boolean};
 
 export interface OutputEmitters {
-	file: (path: string) => void;
-	directory: (path: string) => void;
-	url: (url: string) => void;
-	string: (contents: string, meta?: {type?: string}) => void;
-	error: (error: Error | string) => void;
-	warning: (message: string) => void;
+	file: (path: string, meta?: {flair?: Flair}) => void;
+	directory: (path: string, meta?: {flair?: Flair}) => void;
+	url: (url: string, meta?: {flair?: Flair}) => void;
+	string: (contents: string, meta?: {type?: string, flair?: Flair}) => void;
+	error: (error: Error | string, meta?: {flair?: Flair}) => void;
+	warning: (message: string, meta?: {flair?: Flair}) => void;
 }
 
 export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[key: string]: any}> {
