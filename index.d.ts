@@ -289,8 +289,15 @@ export type OptionsLaxSchema = {[x: string]: string | number | boolean | Options
 type Variant = 'success' | 'info' | 'warning' | 'danger';
 
 export interface Flair {
-	type?: Variant;
 	title: string;
+	type?: Variant;
+	description?: string;
+}
+
+export interface Badge {
+	title: string;
+	icon: string;
+	type?: Variant;
 }
 
 // These are the only items processors deal with
@@ -300,6 +307,7 @@ export interface ItemBase {
 	readonly id: string;
 	readonly created: number;
 	flair?: Flair;
+	badge?: Badge;
 }
 
 export interface ItemFile extends ItemBase {
