@@ -376,13 +376,17 @@ export interface Progress {
 
 export type ProgressData = {completed?: number; total?: number; indeterminate?: boolean};
 
+export type OutputMeta<T = {}> = T & {
+	flair?: Flair;
+};
+
 export interface OutputEmitters {
-	file: (path: string, meta?: {flair?: Flair}) => void;
-	directory: (path: string, meta?: {flair?: Flair}) => void;
-	url: (url: string, meta?: {flair?: Flair}) => void;
-	string: (contents: string, meta?: {type?: string, flair?: Flair}) => void;
-	error: (error: Error | string, meta?: {flair?: Flair}) => void;
-	warning: (message: string, meta?: {flair?: Flair}) => void;
+	file: (path: string, meta?: OutputMeta) => void;
+	directory: (path: string, meta?: OutputMeta) => void;
+	url: (url: string, meta?: OutputMeta) => void;
+	string: (contents: string, meta?: OutputMeta<{type?: string}>) => void;
+	error: (error: Error | string, meta?: OutputMeta) => void;
+	warning: (message: string, meta?: OutputMeta) => void;
 }
 
 export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[key: string]: any}> {
