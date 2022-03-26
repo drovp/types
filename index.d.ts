@@ -416,6 +416,7 @@ export interface PreparatorUtils {
 	title(value: string | undefined | null): void;
 	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
+	openWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
 }
 
 interface Cleanup {
@@ -432,6 +433,21 @@ export interface DownloadOptions {
 
 interface Download {
 	(url: string | URL, destination: string, options?: DownloadOptions): Promise<string>;
+}
+
+export interface OpenWindowOptions {
+	url: string;
+	title?: string;
+	/**
+	 * Suggested width.
+	 */
+	width?: 550,
+	/**
+	 * Suggested height.
+	 */
+	height?: 600,
+	minWidth?: 420,
+	minHeight?: 530,
 }
 
 export interface ExtractOptions {
