@@ -286,12 +286,20 @@ export type OptionsLaxSchema = {[x: string]: string | number | boolean | Options
  * ITEMS.
  */
 
+type Variant = 'success' | 'info' | 'warning' | 'danger';
+
+export interface Flair {
+	type?: Variant;
+	title: string;
+}
+
 // These are the only items processors deal with
 export type Item = ItemFile | ItemDirectory | ItemBlob | ItemString | ItemUrl;
 
 export interface ItemBase {
 	readonly id: string;
 	readonly created: number;
+	flair?: Flair;
 }
 
 export interface ItemFile extends ItemBase {
@@ -335,13 +343,6 @@ export interface ItemError extends ItemBase {
 export interface ItemWarning extends ItemBase {
 	kind: 'warning';
 	message: string;
-}
-
-type Variant = 'success' | 'info' | 'warning' | 'danger';
-
-export interface Flair {
-	type?: Variant;
-	title: string;
 }
 
 /**
