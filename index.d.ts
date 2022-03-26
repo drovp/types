@@ -387,6 +387,7 @@ export type ProgressData = {completed?: number; total?: number; indeterminate?: 
 
 export type OutputMeta<T = {}> = T & {
 	flair?: Flair;
+	badge?: Badge;
 };
 
 export interface OutputEmitters {
