@@ -436,18 +436,18 @@ interface Download {
 }
 
 export interface OpenWindowOptions {
-	url: string;
+	path: string;
 	title?: string;
 	/**
 	 * Suggested width.
 	 */
-	width?: 550,
+	width?: number;
 	/**
 	 * Suggested height.
 	 */
-	height?: 600,
-	minWidth?: 420,
-	minHeight?: 530,
+	height?: number;
+	minWidth?: number;
+	minHeight?: number;
 }
 
 export interface ExtractOptions {
