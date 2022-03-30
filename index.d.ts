@@ -416,7 +416,7 @@ export interface PreparatorUtils {
 	title(value: string | undefined | null): void;
 	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
-	openWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
+	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
 }
 
 interface Cleanup {
