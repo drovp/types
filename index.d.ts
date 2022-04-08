@@ -290,14 +290,14 @@ type Variant = 'success' | 'info' | 'warning' | 'danger';
 
 export interface Flair {
 	title: string;
-	type?: Variant;
+	variant?: Variant;
 	description?: string;
 }
 
 export interface Badge {
 	title: string;
 	icon: string;
-	type?: Variant;
+	variant?: Variant;
 }
 
 // These are the only items processors deal with
