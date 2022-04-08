@@ -414,25 +414,32 @@ export interface PreparatorUtils {
 	modifiers: string;
 	action: 'drop' | 'paste';
 	title(value: string | undefined | null): void;
+	alert(data: ModalData): Promise<void>;
+	confirm(data: ModalData): Promise<ModalResult<boolean>>;
+	prompt(
+		data: ModalData,
+		stringOptions?: Omit<OptionString, 'title' | 'description' | 'type' | 'name'>
+	): Promise<ModalResult<string>>;
+	promptOptions<T extends OptionsData | undefined = undefined>(
+		data: ModalData,
+		schema: OptionsSchema<T>
+	): Promise<ModalResult<T>>;
 	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
 	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
 }
 
-interface Cleanup {
-	(directoryPath: string): Promise<void>;
+interface ModalData {
+	variant?: Variant;
+	title?: string;
+	message?: string;
+	details?: string;
 }
 
-export interface DownloadOptions {
-	onProgress?: (progress: {completed: number; total?: number}) => void;
-	onLog?: (message: string) => void;
-	filename?: string;
-	timeout?: number;
-	signal?: AbortSignal;
-}
-
-interface Download {
-	(url: string | URL, destination: string, options?: DownloadOptions): Promise<string>;
+export interface ModalResult<T = unknown> {
+	canceled: boolean;
+	payload: T;
+	modifiers: string;
 }
 
 export interface OpenWindowOptions {
@@ -450,11 +457,20 @@ export interface OpenWindowOptions {
 	minHeight?: number;
 }
 
-export interface ExtractOptions {
-	listDetails?: boolean;
+interface Cleanup {
+	(directoryPath: string): Promise<void>;
+}
+
+interface Download {
+	(url: string | URL, destination: string, options?: DownloadOptions): Promise<string>;
+}
+
+export interface DownloadOptions {
+	onProgress?: (progress: {completed: number; total?: number}) => void;
 	onLog?: (message: string) => void;
-	onStdout?: (data: Buffer) => void;
-	onStderr?: (data: Buffer) => void;
+	filename?: string;
+	timeout?: number;
+	signal?: AbortSignal;
 }
 
 interface Extract {
@@ -464,6 +480,13 @@ interface Extract {
 	(archivePath: string, options: ExtractOptions & {listDetails: true}): Promise<ExtractListDetailItem[]>;
 	(archivePath: string, destinationPath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
 	(archivePath: string, options?: ExtractOptions & {listDetails?: false}): Promise<string[]>;
+}
+
+export interface ExtractOptions {
+	listDetails?: boolean;
+	onLog?: (message: string) => void;
+	onStdout?: (data: Buffer) => void;
+	onStderr?: (data: Buffer) => void;
 }
 
 export interface ExtractListDetailItem {
