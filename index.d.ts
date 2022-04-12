@@ -483,10 +483,10 @@ interface Extract {
 }
 
 export interface ExtractOptions {
+	overwrite?: boolean;
 	listDetails?: boolean;
 	onLog?: (message: string) => void;
-	onStdout?: (data: Buffer) => void;
-	onStderr?: (data: Buffer) => void;
+	onProgress?: (fraction: number) => void;
 }
 
 export interface ExtractListDetailItem {
