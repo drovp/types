@@ -486,7 +486,7 @@ export interface ExtractOptions {
 	overwrite?: boolean;
 	listDetails?: boolean;
 	onLog?: (message: string) => void;
-	onProgress?: (fraction: number) => void;
+	onProgress?: (progress: ProgressData) => void;
 }
 
 export interface ExtractListDetailItem {
