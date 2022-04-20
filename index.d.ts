@@ -490,6 +490,13 @@ export interface ExtractOptions {
 }
 
 export interface ExtractListDetailItem {
+	/**
+	 * File name.
+	 */
+	name: string;
+	/**
+	 * Full path to a file.
+	 */
 	path: string;
 	size: number;
 	isDirectory: boolean;
