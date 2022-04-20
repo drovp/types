@@ -364,8 +364,13 @@ export interface LoadUtils {
 export interface InstallUtils {
 	dataPath: string;
 	tmpPath: string;
-	extract: Extract;
+	/**
+	 * Fetch & parse JSON from URL with built in timeout.
+	 * Throws when response code is not 200.
+	 */
+	fetchJson: <T extends unknown = unknown>(url: string, init?: RequestInit & {timeout?: number}) => Promise<T>;
 	download: Download;
+	extract: Extract;
 	cleanup: Cleanup;
 	progress: Progress;
 	stage: (name: string) => void;
@@ -501,6 +506,10 @@ export interface ExtractListDetailItem {
 	size: number;
 	isDirectory: boolean;
 	isFile: boolean;
+}
+
+export interface FetchJsonError extends Error {
+	status: number;
 }
 
 /**
