@@ -122,9 +122,9 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	instructions?: string;
 }
 
-export interface DependencyData {
+export interface DependencyData<T = unknown> {
 	version?: string;
-	payload?: any;
+	payload?: T;
 }
 
 export interface DependencyConfig {
