@@ -357,11 +357,27 @@ export interface ItemWarning extends ItemBase {
  * UTILS.
  */
 
+interface CommonModals {
+	alert(data: ModalData): Promise<void>;
+	confirm(data: ModalData): Promise<ModalResult<boolean>>;
+	prompt(
+		data: ModalData,
+		stringOptions?: Omit<OptionString, 'title' | 'description' | 'type' | 'name'>
+	): Promise<ModalResult<string>>;
+	promptOptions<T extends OptionsData | undefined = undefined>(
+		data: ModalData,
+		schema: OptionsSchema<T>
+	): Promise<ModalResult<T>>;
+	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
+	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
+	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
+}
+
 export interface LoadUtils {
 	dataPath: string;
 }
 
-export interface InstallUtils {
+export type InstallUtils = CommonModals & {
 	dataPath: string;
 	tmpPath: string;
 	/**
@@ -375,7 +391,7 @@ export interface InstallUtils {
 	progress: Progress;
 	stage: (name: string) => void;
 	log: (...args: any[]) => void;
-}
+};
 
 export interface Progress {
 	(progress?: ProgressData | null): void;
@@ -415,24 +431,11 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	appVersion: string;
 }
 
-export interface PreparatorUtils {
+export type PreparatorUtils = CommonModals & {
 	modifiers: string;
 	action: 'drop' | 'paste';
 	title(value: string | undefined | null): void;
-	alert(data: ModalData): Promise<void>;
-	confirm(data: ModalData): Promise<ModalResult<boolean>>;
-	prompt(
-		data: ModalData,
-		stringOptions?: Omit<OptionString, 'title' | 'description' | 'type' | 'name'>
-	): Promise<ModalResult<string>>;
-	promptOptions<T extends OptionsData | undefined = undefined>(
-		data: ModalData,
-		schema: OptionsSchema<T>
-	): Promise<ModalResult<T>>;
-	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
-	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
-	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<T>;
-}
+};
 
 interface ModalData {
 	variant?: Variant;
