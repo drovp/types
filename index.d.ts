@@ -435,6 +435,7 @@ export type PreparatorUtils = CommonModals & {
 	modifiers: string;
 	action: 'drop' | 'paste';
 	title(value: string | undefined | null): void;
+	dependencies: {[key: string]: unknown};
 };
 
 interface ModalData {
