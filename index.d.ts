@@ -101,6 +101,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	main: string;
 	description?: string;
 	dependencies?: string[];
+	optionalDependencies?: string[];
 	accepts?: AcceptsFlags<Payload['options']>;
 	bulk?: boolean | ((items: Item[], options: Payload['options']) => boolean);
 	expandDirectory?: (item: ItemDirectory, options: Payload['options']) => boolean;
