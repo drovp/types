@@ -371,7 +371,7 @@ interface CommonModals {
 	): Promise<ModalResult<T>>;
 	showOpenDialog(options: OpenDialogOptions): Promise<OpenDialogReturnValue>;
 	showSaveDialog(options: SaveDialogOptions): Promise<SaveDialogReturnValue>;
-	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload: unknown): Promise<ModalResult<T>>;
+	openModalWindow<T = unknown>(options: string | OpenWindowOptions, payload?: unknown): Promise<ModalWindowResult<T>>;
 }
 
 export interface LoadUtils {
@@ -450,6 +450,11 @@ export interface ModalResult<T = unknown> {
 	canceled: boolean;
 	payload: T;
 	modifiers: string;
+}
+
+export interface ModalWindowResult<T = unknown> {
+	canceled: boolean;
+	payload: T;
 }
 
 export interface OpenWindowOptions {
