@@ -437,7 +437,14 @@ export type PreparatorUtils = CommonModals & {
 	action: 'drop' | 'paste';
 	title(value: string | undefined | null): void;
 	dependencies: {[key: string]: unknown};
+	settings: AppSettings;
 };
+
+export interface AppSettings {
+	fontSize: number;
+	compact: false;
+	theme: 'os' | 'light' | 'dark';
+}
 
 export interface ModalData {
 	variant?: Variant;
