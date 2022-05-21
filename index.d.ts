@@ -439,7 +439,7 @@ export type PreparatorUtils = CommonModals & {
 	dependencies: {[key: string]: unknown};
 };
 
-interface ModalData {
+export interface ModalData {
 	variant?: Variant;
 	title?: string;
 	message?: string;
