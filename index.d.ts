@@ -442,7 +442,7 @@ export type PreparatorUtils = CommonModals & {
 
 export interface AppSettings {
 	fontSize: number;
-	compact: false;
+	compact: boolean;
 	theme: 'os' | 'light' | 'dark';
 }
 
