@@ -444,6 +444,8 @@ export interface AppSettings {
 	fontSize: number;
 	compact: boolean;
 	theme: 'os' | 'light' | 'dark';
+	developerMode: boolean;
+	editCommand: string;
 }
 
 export interface ModalData {
