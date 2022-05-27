@@ -443,6 +443,7 @@ export interface PreparatorUtils<D extends DependenciesData = DependenciesData> 
 	title(value: string | undefined | null): void;
 	dependencies: D;
 	settings: AppSettings;
+	nodePath: string;
 }
 
 export interface AppSettings {
