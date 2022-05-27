@@ -97,7 +97,10 @@ export type UrlFilter<O extends OptionsData | undefined = OptionsData | undefine
 	options: O
 ) => boolean;
 
-export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
+export interface ProcessorConfig<
+	Payload extends AnyPayload = AnyPayload,
+	Dependencies extends DependenciesData = DependenciesData
+> {
 	main: string;
 	description?: string;
 	dependencies?: string[];
@@ -113,7 +116,7 @@ export interface ProcessorConfig<Payload extends AnyPayload = AnyPayload> {
 	dropFilter?: (items: Item[], options?: Payload['options']) => Item[] | Promise<Item[]>;
 	operationPreparator?: (
 		payload: Pick<Payload, 'id' | 'options' | 'input' | 'inputs'>,
-		utils: PreparatorUtils
+		utils: PreparatorUtils<Dependencies>
 	) => Payload | null | undefined | false | void | Promise<Payload | null | undefined | false | void>;
 	progressFormatter?: 'bytes' | ((progress: ProgressData) => string); // HTML
 	operationMetaFormatter?: (meta: any) => string; // HTML
@@ -407,6 +410,8 @@ export interface Progress {
 
 export type ProgressData = {completed?: number; total?: number; indeterminate?: boolean};
 
+export type DependenciesData = {[key: string]: unknown};
+
 export type OutputMeta<T = {}> = T & {
 	flair?: Flair;
 	badge?: Badge;
@@ -432,13 +437,13 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	appVersion: string;
 }
 
-export type PreparatorUtils = CommonModals & {
+export interface PreparatorUtils<D extends DependenciesData = DependenciesData> extends CommonModals {
 	modifiers: string;
 	action: 'drop' | 'paste';
 	title(value: string | undefined | null): void;
-	dependencies: {[key: string]: unknown};
+	dependencies: D;
 	settings: AppSettings;
-};
+}
 
 export interface AppSettings {
 	fontSize: number;
