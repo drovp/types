@@ -29,7 +29,13 @@ export declare function makeDependencyConfig<T extends DependencyConfig = Depend
 export type PluginModule = (plugin: Plugin) => void;
 
 export interface Plugin {
-	registerProcessor<Payload extends AnyPayload = AnyPayload>(name: string, config: ProcessorConfig<Payload>): void;
+	registerProcessor<
+		Payload extends AnyPayload = AnyPayload,
+		Dependencies extends DependenciesData = DependenciesData
+	>(
+		name: string,
+		config: ProcessorConfig<Payload, Dependencies>
+	): void;
 	registerDependency(name: string, config: DependencyConfig): void;
 }
 
