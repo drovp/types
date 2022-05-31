@@ -113,7 +113,7 @@ export interface ProcessorConfig<
 	optionalDependencies?: string[];
 	accepts?: AcceptsFlags<Payload['options']>;
 	bulk?: boolean | ((items: Item[], options: Payload['options']) => boolean);
-	expandDirectory?: (item: ItemDirectory, options: Payload['options']) => boolean;
+	expandDirectory?: (item: ItemDirectory, options: Payload['options'], meta: {modifiers: string}) => boolean;
 	threadType?: string | string[] | ((payload: Payload) => string | string[]);
 	threadTypeDescription?: string;
 	options?: OptionsSchema<Payload['options']> | OptionsLaxSchema;
