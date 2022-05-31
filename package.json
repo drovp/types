@@ -1,6 +1,6 @@
 {
 	"name": "@drovp/types",
-	"version": "4.9.0",
+	"version": "4.9.1",
 	"description": "Drovp plugin API definitions",
 	"keywords": [
 		"drovp",
