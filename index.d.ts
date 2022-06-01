@@ -44,7 +44,7 @@ export type Processor = (payload: any, utils?: ProcessorUtils) => Promise<void>;
 export type PayloadData<
 	Options extends OptionsData | undefined = undefined,
 	Accepts extends AcceptsFlags<any> | undefined = undefined,
-	Extra extends OptionsData = {}
+	Extra = {}
 > = {
 	readonly id: string;
 	options: Options;
