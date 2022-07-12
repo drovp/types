@@ -553,14 +553,14 @@ export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) ex
  * Electron interfaces.
  */
 
-interface DialogFileFilter {
+export interface DialogFileFilter {
 	// Docs: https://electronjs.org/docs/api/structures/file-filter
 
 	extensions: string[];
 	name: string;
 }
 
-interface OpenDialogOptions {
+export interface OpenDialogOptions {
 	title?: string;
 	defaultPath?: string;
 	/**
@@ -598,7 +598,7 @@ interface OpenDialogOptions {
 	securityScopedBookmarks?: boolean;
 }
 
-interface OpenDialogReturnValue {
+export interface OpenDialogReturnValue {
 	/**
 	 * whether or not the dialog was canceled.
 	 */
@@ -618,7 +618,7 @@ interface OpenDialogReturnValue {
 	bookmarks?: string[];
 }
 
-interface SaveDialogOptions {
+export interface SaveDialogOptions {
 	/**
 	 * The dialog title. Cannot be displayed on some _Linux_ desktop environments.
 	 */
@@ -668,7 +668,7 @@ interface SaveDialogOptions {
 	securityScopedBookmarks?: boolean;
 }
 
-interface SaveDialogReturnValue {
+export interface SaveDialogReturnValue {
 	/**
 	 * whether or not the dialog was canceled.
 	 */
