@@ -384,12 +384,22 @@ interface CommonModals {
 }
 
 export interface LoadUtils {
+	/** Path to store dependency data. */
 	dataPath: string;
+	/** Path to plugin's data directory. */
+	pluginDataPath: string;
 }
 
 export type InstallUtils = CommonModals & {
+	/** Path to store dependency data. */
 	dataPath: string;
+	/**
+	 * Path to use for temporary files during installation.
+	 * This directory will be deleted after installation completes.
+	 */
 	tmpPath: string;
+	/** Path to plugin's data directory. */
+	pluginDataPath: string;
 	/**
 	 * Fetch & parse JSON from URL with built in timeout.
 	 * Throws when response code is not 200.
@@ -441,6 +451,8 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 	log: (...args: any[]) => void;
 	stage: (name: string) => void;
 	appVersion: string;
+	/** Path to plugin's data directory. */
+	dataPath: string;
 }
 
 export interface PreparatorUtils<D extends DependenciesData = DependenciesData> extends CommonModals {
@@ -449,7 +461,10 @@ export interface PreparatorUtils<D extends DependenciesData = DependenciesData> 
 	title(value: string | undefined | null): void;
 	dependencies: D;
 	settings: AppSettings;
+	/** Path to node.js binary. */
 	nodePath: string;
+	/** Path to plugin's data directory. */
+	dataPath: string;
 }
 
 export interface AppSettings {
