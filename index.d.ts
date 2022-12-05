@@ -310,7 +310,7 @@ export interface Badge {
 	variant?: Variant;
 }
 
-// These are the only items processors deal with
+/** The only items processors deal with. */
 export type Item = ItemFile | ItemDirectory | ItemBlob | ItemString | ItemUrl;
 
 export interface ItemBase {
@@ -322,23 +322,16 @@ export interface ItemBase {
 
 export interface ItemFile extends ItemBase {
 	kind: 'file';
-	type: string; // lowercase extension type without the dot
+	/** Lowercase extension without the dot. */
+	type: string;
 	path: string;
+	exists: boolean;
 	size: number;
-}
-export interface ItemMissingFile extends ItemBase {
-	kind: 'missing-file';
-	path: string;
-	error: string;
 }
 export interface ItemDirectory extends ItemBase {
 	kind: 'directory';
 	path: string;
-}
-export interface ItemMissingDirectory extends ItemBase {
-	kind: 'missing-directory';
-	path: string;
-	error: string;
+	exists: boolean;
 }
 export interface ItemBlob extends ItemBase {
 	kind: 'blob';
