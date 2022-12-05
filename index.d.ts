@@ -298,12 +298,14 @@ export type OptionsLaxSchema = {[x: string]: string | number | boolean | Options
 
 type Variant = 'success' | 'info' | 'warning' | 'danger';
 
+/**	A short text label displayed in item's card. */
 export interface Flair {
 	title: string;
 	variant?: Variant;
 	description?: string;
 }
 
+/** An icon displayed in item's card. */
 export interface Badge {
 	title: string;
 	icon: string;
