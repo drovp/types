@@ -379,6 +379,10 @@ interface CommonModals {
 }
 
 export interface LoadUtils {
+	/** Dependency id (id: `drovp/ffmpeg:ffmpeg`, name: `ffmpeg`). */
+	id: string;
+	/** Dependency name (id: `drovp/ffmpeg:ffmpeg`, name: `ffmpeg`). */
+	name: string;
 	/** Path to store dependency data. */
 	dataPath: string;
 	/** Path to plugin's data directory. */
@@ -386,6 +390,10 @@ export interface LoadUtils {
 }
 
 export type InstallUtils = CommonModals & {
+	/** Dependency id (id: `drovp/ffmpeg:ffmpeg`, name: `ffmpeg`). */
+	id: string;
+	/** Dependency name (id: `drovp/ffmpeg:ffmpeg`, name: `ffmpeg`). */
+	name: string;
 	/** Path to store dependency data. */
 	dataPath: string;
 	/**
