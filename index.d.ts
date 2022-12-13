@@ -402,7 +402,9 @@ export type InstallUtils = CommonModals & {
 	fetchJson: <T extends unknown = unknown>(url: string, init?: RequestInit & {timeout?: number}) => Promise<T>;
 	download: Download;
 	extract: Extract;
-	cleanup: Cleanup;
+	/** @deprecated Renamed to `prepareEmptyDirectory`. */
+	cleanup: PrepareEmptyDirectory;
+	prepareEmptyDirectory: PrepareEmptyDirectory;
 	progress: Progress;
 	stage: (name: string) => void;
 	log: (...args: any[]) => void;
@@ -503,8 +505,8 @@ export interface OpenWindowOptions {
 	minHeight?: number;
 }
 
-interface Cleanup {
-	(directoryPath: string): Promise<void>;
+interface PrepareEmptyDirectory {
+	(path: string): Promise<void>;
 }
 
 interface Download {
