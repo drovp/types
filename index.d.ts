@@ -169,7 +169,7 @@ export interface OptionBoolean<O extends OptionsData | undefined = OptionsData |
 export type OptionNumber<O extends OptionsData | undefined = OptionsData | undefined> = OptionBase<number | null, O> & {
 	type: 'number';
 	kind?: 'integer' | 'float';
-	default?: number;
+	default?: number | null;
 	nullable?: boolean;
 	min?: number;
 	max?: number;
@@ -215,7 +215,7 @@ export interface OptionSelect<
 	Value = O extends (infer R)[] ? R : keyof O
 > extends OptionBase<Value | null, OD> {
 	type: 'select';
-	default?: Value | Value[];
+	default?: Value | Value[] | null;
 	options: O;
 	nullable?: boolean;
 	max?: number;
