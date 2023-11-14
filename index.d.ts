@@ -462,7 +462,7 @@ export interface ProcessorUtils<Dependencies extends {[key: string]: any} = {[ke
 
 export interface PreparatorUtils<D extends DependenciesData = DependenciesData> extends CommonModals {
 	modifiers: string;
-	action: 'drop' | 'paste';
+	action: 'drop' | 'paste' | 'protocol';
 	title(value: string | undefined | null): void;
 	dependencies: D;
 	settings: AppSettings;
