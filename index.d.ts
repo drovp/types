@@ -174,6 +174,7 @@ export type OptionNumber<O extends OptionsData | undefined = OptionsData | undef
 	min?: number;
 	max?: number;
 	step?: number;
+	cols?: number;
 	softMin?: boolean;
 	softMax?: boolean;
 	steps?: number[];
